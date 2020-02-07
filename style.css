@@ -4,5 +4,6 @@ body {
 }
 
 canvas {
-    background-color: azure;
+    background-image: url('./img/space.jpg');
+    background-size: cover;
 }
