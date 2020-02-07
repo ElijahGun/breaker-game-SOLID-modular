@@ -44,7 +44,6 @@ export function switchVert(ball) {
     ball.dy = -ball.dy;
 }
 
-//probably should break this down into wallCollision & paddleCollision according to SOLID hmm..
 export function wallBounce(ball) {
     if (ball.x + ball.radius > canvas.width || ball.x < 0) {
       switchHoriz(ball);
