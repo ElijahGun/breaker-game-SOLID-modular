@@ -2,7 +2,7 @@ import * as ball from './modules/ball.js';
 import * as paddle from './modules/paddle.js';
 import * as brick from './modules/brick.js';
 import { clear, canvas } from './modules/canvas.js';
-
+import * as gameState from './modules/gameState.js';
 //=======================
 //development testing
 //=======================
@@ -13,6 +13,8 @@ var ball1 = ball.gameBall;
 
 function runGame() {
     clear();
+    gameState.drawLives();
+    gameState.drawScore();
     ball.draw(testBall);        //dev test ball
     ball.draw(ball1);
     ball.moveHoriz(ball1);

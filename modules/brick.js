@@ -1,5 +1,6 @@
 import { ctx } from './canvas.js';
 import * as balli from './ball.js';
+import * as gameState from './gameState.js';
 
 var brickColumns = 5;
 var brickRows = 3;
@@ -50,6 +51,8 @@ export function collision(ball) {
         ) {
           balli.switchVert(ball);
           brick.status = 0;
+          gameState.lives ++;
+          gameState.score ++;
         }
       }
     }
