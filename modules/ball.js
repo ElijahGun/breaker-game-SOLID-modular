@@ -57,5 +57,3 @@ export function paddleBounce(ball, paddle1, paddle2) {
         switchVert(ball);
     }
 }
-
-//(ball.y > canvas.height && ball.x > paddle1.x && ball.x < paddle1.x + paddle1.width )
