@@ -1,4 +1,5 @@
 import { ctx } from './canvas.js';
+import * as balli from './ball.js';
 
 var brickColumns = 5;
 var brickRows = 3;
@@ -23,8 +24,8 @@ export function draw() {
   for (let c = 0; c < brickColumns; c++) {
     for (let r = 0; r < brickRows; r++) {
       var b = bricks[c][r];
-      b.x = (c* (brickWidth + brickPadding) + brickOffsetLeft);
-      b.y = (r* (brickHeight + brickPadding) + brickOffsetTop);
+      b.x = c * (brickWidth + brickPadding) + brickOffsetLeft;
+      b.y = r * (brickHeight + brickPadding) + brickOffsetTop;
       if (b.status == 1) {
         ctx.beginPath();
         ctx.rect(b.x, b.y, brickWidth, brickHeight);
@@ -36,4 +37,21 @@ export function draw() {
   }
 }
 
-//console.log(bricks);
+export function collision(ball) {
+  for (let c = 0; c < brickColumns; c++) {
+    for (let r = 0; r < brickRows; r++) {
+      var brick = bricks[c][r];
+      if (brick.status == 1) {
+        if (
+          ball.x > brick.x &&
+          ball.x < brick.x + brickWidth &&
+          ball.y > brick.y &&
+          ball.y < brick.y + brickHeight
+        ) {
+          balli.switchVert(ball);
+          brick.status = 0;
+        }
+      }
+    }
+  }
+}

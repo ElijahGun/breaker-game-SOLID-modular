@@ -9,20 +9,21 @@ import { clear, canvas } from './modules/canvas.js';
 var testBall = ball.factory();
 testBall.y = canvas.height - (paddle.gamePaddle.height + testBall.radius);
 //more testing
-
+var ball1 = ball.gameBall;
 
 function runGame() {
     clear();
     ball.draw(testBall);        //dev test ball
-    ball.draw(ball.gameBall);
-    ball.moveHoriz(ball.gameBall);
-    ball.moveVert(ball.gameBall);
-    ball.wallBounce(ball.gameBall);
-    ball.paddleBounce(ball.gameBall, paddle.gamePaddle);
+    ball.draw(ball1);
+    ball.moveHoriz(ball1);
+    ball.moveVert(ball1);
+    ball.wallBounce(ball1);
+    ball.paddleBounce(ball1, paddle.gamePaddle);
     paddle.draw(paddle.gamePaddle);
     paddle.moveHoriz(paddle.gamePaddle);
     //bricks
     brick.draw();
+    brick.collision(ball1);
 }
 
 setInterval(runGame, 10);
