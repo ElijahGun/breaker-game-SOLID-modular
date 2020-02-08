@@ -45,15 +45,15 @@ export function switchVert(ball) {
 }
 
 export function wallBounce(ball) {
-    if (ball.x + ball.radius > canvas.width || ball.x < 0) {
+    if (ball.x + ball.radius > canvas.width || ball.x < ball.radius) {
       switchHoriz(ball);
-    } else if (ball.y < 0 ) {
+    } else if (ball.y < ball.radius ) {
         switchVert(ball);
 }
 }
 
 export function paddleBounce(ball, paddle1, paddle2) {
-    if (ball.y > canvas.height - paddle1.height && ball.x > paddle1.x && ball.x < paddle1.x + paddle1.width ) {
+    if (ball.y > canvas.height - (paddle1.height + ball.radius) && ball.x > paddle1.x && ball.x < paddle1.x + paddle1.width ) {
         switchVert(ball);
     }
 }
